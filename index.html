@@ -71,10 +71,17 @@
             height: 100%; display: flex; align-items: center; justify-content: space-between;
         }
         .nav-logo {
+            display: flex; align-items: center; gap: 9px;
             font-family: var(--mono); font-size: 1.2rem; font-weight: 700;
             background: var(--grad); -webkit-background-clip: text;
             -webkit-text-fill-color: transparent; background-clip: text;
             text-decoration: none; letter-spacing: -0.5px;
+        }
+        .nav-logo img {
+            width: 32px; height: 32px; border-radius: 50%;
+            border: 1.5px solid rgba(56,189,248,0.5);
+            object-fit: contain; flex-shrink: 0;
+            background: var(--bg-primary);
         }
         .nav-links { display: flex; gap: 32px; list-style: none; }
         .nav-links a {
@@ -511,6 +518,292 @@
             .tl-item        { padding-left: 48px; }
             .tl-dot         { left: 6px; }
         }
+        /* =========================================
+           OPEN SOURCE
+        ========================================= */
+        #opensource { background: var(--bg-primary); }
+
+        .oss-wrapper {
+            display: grid;
+            grid-template-columns: 260px 1fr;
+            gap: 56px;
+            align-items: start;
+        }
+
+        /* Badge column */
+        .oss-badge-col {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 20px;
+            position: sticky;
+            top: 100px;
+        }
+        .oss-badge-frame {
+            position: relative;
+            width: 200px;
+            height: 200px;
+        }
+        .oss-badge-frame::before {
+            content: '';
+            position: absolute;
+            inset: -4px;
+            border-radius: 50%;
+            background: conic-gradient(var(--blue), var(--indigo), var(--purple), var(--blue));
+            animation: spin 6s linear infinite;
+            z-index: 0;
+        }
+        .oss-badge-frame::after {
+            content: '';
+            position: absolute;
+            inset: 2px;
+            border-radius: 50%;
+            background: var(--bg-primary);
+            z-index: 1;
+        }
+        @keyframes spin { to { transform: rotate(360deg); } }
+        .oss-badge-frame img {
+            position: relative;
+            z-index: 2;
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            border-radius: 50%;
+            padding: 8px;
+        }
+        .oss-badge-label {
+            text-align: center;
+        }
+        .oss-badge-label strong {
+            display: block;
+            font-size: 1rem;
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-bottom: 4px;
+        }
+        .oss-badge-label span {
+            font-size: 0.78rem;
+            color: var(--text-muted);
+            font-family: var(--mono);
+        }
+        .oss-stats-row {
+            display: flex;
+            gap: 16px;
+        }
+        .oss-stat-chip {
+            flex: 1;
+            text-align: center;
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            padding: 10px 8px;
+        }
+        .oss-stat-chip .m-val { font-size: 1.1rem; }
+        .oss-stat-chip .m-lbl { font-size: 0.67rem; }
+
+        /* PR card */
+        .pr-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 20px;
+            overflow: hidden;
+            transition: border-color 0.3s, box-shadow 0.3s;
+        }
+        .pr-card:hover {
+            border-color: var(--border-hover);
+            box-shadow: var(--glow-blue);
+        }
+        .pr-card-header {
+            background: linear-gradient(135deg, rgba(56,189,248,0.08) 0%, rgba(129,140,248,0.08) 100%);
+            border-bottom: 1px solid var(--border);
+            padding: 24px 28px;
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            gap: 16px;
+            flex-wrap: wrap;
+        }
+        .pr-repo-line {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-family: var(--mono);
+            font-size: 0.78rem;
+            color: var(--text-muted);
+            margin-bottom: 8px;
+        }
+        .pr-repo-line i { color: var(--blue); }
+        .pr-title-link {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: var(--text-primary);
+            text-decoration: none;
+            line-height: 1.4;
+            transition: color 0.2s;
+        }
+        .pr-title-link:hover { color: var(--blue); }
+        .pr-merged-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            background: rgba(139,92,246,0.15);
+            border: 1px solid rgba(139,92,246,0.35);
+            border-radius: 100px;
+            padding: 5px 14px;
+            font-size: 0.78rem;
+            color: #a78bfa;
+            font-weight: 600;
+            white-space: nowrap;
+            flex-shrink: 0;
+        }
+        .pr-merged-badge::before {
+            content: '';
+            width: 7px; height: 7px;
+            background: #a78bfa;
+            border-radius: 50%;
+        }
+        .pr-card-body { padding: 28px; }
+        .pr-section-title {
+            font-size: 0.72rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: var(--text-muted);
+            font-family: var(--mono);
+            margin-bottom: 10px;
+        }
+        .pr-description {
+            color: var(--text-secondary);
+            font-size: 0.91rem;
+            line-height: 1.8;
+            margin-bottom: 24px;
+        }
+        .pr-impact-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 14px;
+            margin-bottom: 24px;
+        }
+        .pr-impact-item {
+            background: rgba(56,189,248,0.05);
+            border: 1px solid rgba(56,189,248,0.12);
+            border-radius: 12px;
+            padding: 14px;
+        }
+        .pr-impact-item i {
+            color: var(--blue);
+            font-size: 1rem;
+            margin-bottom: 8px;
+            display: block;
+        }
+        .pr-impact-item .label {
+            font-size: 0.72rem;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-family: var(--mono);
+            margin-bottom: 4px;
+        }
+        .pr-impact-item .value {
+            font-size: 0.88rem;
+            font-weight: 600;
+            color: var(--text-primary);
+        }
+        .pr-code-block {
+            background: rgba(3,7,18,0.8);
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            padding: 16px 18px;
+            margin-bottom: 24px;
+            font-family: var(--mono);
+            font-size: 0.8rem;
+            color: var(--text-secondary);
+            line-height: 1.7;
+        }
+        .pr-code-block .diff-removed {
+            color: #f87171;
+            display: block;
+        }
+        .pr-code-block .diff-added {
+            color: var(--emerald);
+            display: block;
+        }
+        .pr-code-block .diff-context {
+            color: var(--text-muted);
+            display: block;
+        }
+        .pr-files-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-bottom: 24px;
+        }
+        .pr-file {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            background: rgba(13,20,40,0.9);
+            border: 1px solid var(--border);
+            border-radius: 6px;
+            padding: 4px 10px;
+            font-size: 0.73rem;
+            color: var(--text-secondary);
+            font-family: var(--mono);
+            transition: all 0.2s;
+        }
+        .pr-file i { color: var(--emerald); font-size: 0.65rem; }
+        .pr-file:hover { border-color: var(--blue); color: var(--blue); }
+        .pr-card-footer {
+            border-top: 1px solid var(--border);
+            padding: 18px 28px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+        .pr-meta {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+        .pr-meta-item {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 0.8rem;
+            color: var(--text-muted);
+        }
+        .pr-meta-item i { color: var(--blue); font-size: 0.75rem; }
+        .pr-view-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 7px;
+            padding: 8px 18px;
+            background: rgba(56,189,248,0.1);
+            border: 1px solid rgba(56,189,248,0.3);
+            border-radius: 8px;
+            color: var(--blue);
+            text-decoration: none;
+            font-size: 0.83rem;
+            font-weight: 600;
+            transition: all 0.25s;
+            font-family: var(--mono);
+        }
+        .pr-view-btn:hover {
+            background: rgba(56,189,248,0.18);
+            transform: translateY(-2px);
+            box-shadow: 0 0 16px rgba(56,189,248,0.25);
+        }
+
+        @media (max-width: 900px) {
+            .oss-wrapper { grid-template-columns: 1fr; }
+            .oss-badge-col { position: static; flex-direction: row; flex-wrap: wrap; justify-content: center; }
+            .pr-impact-grid { grid-template-columns: repeat(2, 1fr); }
+        }
+        @media (max-width: 700px) {
+            .pr-impact-grid { grid-template-columns: 1fr; }
+            .pr-card-header { flex-direction: column; }
+        }
     </style>
 </head>
 <body>
@@ -518,11 +811,15 @@
 <!-- ===================== NAV ===================== -->
 <nav id="nav">
     <div class="nav-inner">
-        <a href="#" class="nav-logo">AK.dev</a>
+        <a href="#" class="nav-logo">
+            <img src="./starrocks_contributor_badge.png" alt="StarRocks Contributor">
+            AK.dev
+        </a>
         <ul class="nav-links" id="navLinks">
             <li><a href="#about">About</a></li>
             <li><a href="#skills">Skills</a></li>
             <li><a href="#experience">Experience</a></li>
+            <li><a href="#opensource">Open Source</a></li>
             <li><a href="#projects">Projects</a></li>
             <li><a href="#education">Education</a></li>
             <li><a href="#contact" class="nav-cta">Contact</a></li>
@@ -784,6 +1081,138 @@
                 </div>
             </div>
 
+        </div>
+    </div>
+</section>
+
+<!-- ===================== OPEN SOURCE ===================== -->
+<section id="opensource">
+    <div class="container">
+        <div class="section-hd">
+            <div class="section-tag">// open source</div>
+            <h2 class="section-title">Open Source <span>Contributions</span></h2>
+            <div class="sec-div"></div>
+        </div>
+
+        <div class="oss-wrapper">
+
+            <!-- Badge Column -->
+            <div class="oss-badge-col reveal">
+                <div class="oss-badge-frame">
+                    <img src="./starrocks_contributor_badge.png" alt="StarRocks Contributor Badge">
+                </div>
+                <div class="oss-badge-label">
+                    <strong>StarRocks Contributor</strong>
+                    <span>github.com/StarRocks/starrocks</span>
+                </div>
+                <div class="oss-stats-row">
+                    <div class="oss-stat-chip">
+                        <div class="m-val">1</div>
+                        <div class="m-lbl">PR Merged</div>
+                    </div>
+                    <div class="oss-stat-chip">
+                        <div class="m-val">8</div>
+                        <div class="m-lbl">Files Changed</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- PR Detail Card -->
+            <div class="pr-card reveal">
+
+                <div class="pr-card-header">
+                    <div>
+                        <div class="pr-repo-line">
+                            <i class="fab fa-github"></i>
+                            StarRocks / starrocks &nbsp;·&nbsp; #73509
+                        </div>
+                        <a href="https://github.com/StarRocks/starrocks/pull/73509"
+                           target="_blank" rel="noopener" class="pr-title-link">
+                            [BugFix] Fix FE startup failure during ADLS2 shared-data disaster recovery caused by AZURE_PATH_KEY validation
+                        </a>
+                    </div>
+                    <div class="pr-merged-badge">Merged</div>
+                </div>
+
+                <div class="pr-card-body">
+
+                    <div class="pr-section-title">// the bug</div>
+                    <p class="pr-description">
+                        During Azure Data Lake Storage Gen2 (ADLS2) cluster snapshot disaster recovery, the
+                        restoration process injects <code style="font-family:var(--mono);color:var(--blue);font-size:0.85em">AZURE_PATH_KEY</code>
+                        into storage volume parameters. This constant was not registered in
+                        <code style="font-family:var(--mono);color:var(--blue);font-size:0.85em">CloudConfigurationConstants.PARAM_NAMES</code>,
+                        causing <code style="font-family:var(--mono);color:var(--blue);font-size:0.85em">StorageVolumeMgr.validateParams()</code>
+                        to throw a <code style="font-family:var(--mono);color:var(--orange);font-size:0.85em">DdlException</code>
+                        and completely abort FE (Frontend) node startup — blocking all disaster recovery completion.
+                    </p>
+
+                    <div class="pr-section-title">// the fix</div>
+                    <div class="pr-code-block">
+                        <span class="diff-context">// Before: AZURE_PATH_KEY lived in AzureCloudConfigurationProvider</span>
+                        <span class="diff-context">//         invisible to the shared validation system</span>
+                        <span class="diff-removed">- private static final String AZURE_PATH_KEY = "azure_path";</span>
+                        <span class="diff-context">&nbsp;</span>
+                        <span class="diff-context">// After: moved to CloudConfigurationConstants (shared module)</span>
+                        <span class="diff-context">//        reflection-based validateParams() can now discover it</span>
+                        <span class="diff-added">+ public static final String AZURE_PATH_KEY = "azure_path";</span>
+                    </div>
+
+                    <div class="pr-section-title">// impact</div>
+                    <div class="pr-impact-grid">
+                        <div class="pr-impact-item">
+                            <i class="fas fa-bug"></i>
+                            <div class="label">Root Cause</div>
+                            <div class="value">Cross-module constant visibility gap in shared credential config</div>
+                        </div>
+                        <div class="pr-impact-item">
+                            <i class="fas fa-bolt"></i>
+                            <div class="label">Outcome</div>
+                            <div class="value">FE nodes now start successfully after ADLS2 DR restoration</div>
+                        </div>
+                        <div class="pr-impact-item">
+                            <i class="fas fa-code-branch"></i>
+                            <div class="label">Backport</div>
+                            <div class="value">Cherry-picked to branch-4.1 for older release users</div>
+                        </div>
+                    </div>
+
+                    <div class="pr-section-title">// files changed</div>
+                    <div class="pr-files-list">
+                        <span class="pr-file"><i class="fas fa-circle"></i>CloudConfigurationConstants.java</span>
+                        <span class="pr-file"><i class="fas fa-circle"></i>AzureCloudConfigurationProvider.java</span>
+                        <span class="pr-file"><i class="fas fa-circle"></i>FileTable.java</span>
+                        <span class="pr-file"><i class="fas fa-circle"></i>CredentialUtil.java</span>
+                        <span class="pr-file"><i class="fas fa-circle"></i>AzBlobFileSystem.java</span>
+                        <span class="pr-file"><i class="fas fa-circle"></i>HdfsFsManager.java</span>
+                        <span class="pr-file"><i class="fas fa-circle"></i>CredentialUtilTest.java</span>
+                        <span class="pr-file"><i class="fas fa-circle"></i>+1 more</span>
+                    </div>
+
+                </div>
+
+                <div class="pr-card-footer">
+                    <div class="pr-meta">
+                        <span class="pr-meta-item">
+                            <i class="fas fa-code-merge"></i> Merged by kevincai
+                        </span>
+                        <span class="pr-meta-item">
+                            <i class="fas fa-calendar"></i> June 9, 2026
+                        </span>
+                        <span class="pr-meta-item">
+                            <i class="fas fa-check-double"></i> 2 approvals
+                        </span>
+                        <span class="pr-meta-item">
+                            <i class="fas fa-tag"></i> branch-4.1 backport
+                        </span>
+                    </div>
+                    <a href="https://github.com/StarRocks/starrocks/pull/73509"
+                       target="_blank" rel="noopener" class="pr-view-btn">
+                        <i class="fab fa-github"></i> View PR #73509
+                    </a>
+                </div>
+
+            </div>
         </div>
     </div>
 </section>
